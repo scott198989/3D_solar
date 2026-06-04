@@ -1,0 +1,339 @@
+.grok-experience {
+  --grok-accent: #88f0ba;
+  --grok-accent-soft: rgba(136, 240, 186, 0.14);
+  --grok-panel: rgba(7, 12, 18, 0.9);
+  --grok-line: rgba(255, 255, 255, 0.12);
+  position: relative;
+  min-height: calc(100svh - 72px);
+  display: flex;
+  flex-direction: column;
+  background: #020408;
+  overflow: hidden;
+}
+
+.grok-experience__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.7rem clamp(1rem, 3vw, 1.5rem);
+  border-bottom: 1px solid var(--grok-line);
+  background: rgba(5, 7, 11, 0.92);
+  z-index: 10;
+}
+
+.grok-experience__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--grok-line);
+  border-radius: 8px;
+  color: #aab4c0;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.grok-experience__back:hover {
+  border-color: var(--grok-accent);
+  color: var(--grok-accent);
+}
+
+.grok-experience__title h1 {
+  margin: 0;
+  font-size: clamp(1.05rem, 2.5vw, 1.4rem);
+  font-weight: 780;
+}
+
+.grok-experience__title p {
+  margin: 0.12rem 0 0;
+  color: #8a96a4;
+  font-size: 0.78rem;
+}
+
+.grok-experience__badge {
+  padding: 0.35rem 0.65rem;
+  border: 1px solid color-mix(in srgb, var(--grok-accent), transparent 50%);
+  border-radius: 999px;
+  color: var(--grok-accent);
+  background: var(--grok-accent-soft);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.grok-experience__viewport {
+  position: relative;
+  flex: 1;
+  min-height: min(72vh, calc(100svh - 140px));
+}
+
+.grok-experience__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.grok-experience__hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.grok-experience__hud > * {
+  pointer-events: auto;
+}
+
+.grok-panel {
+  border: 1px solid var(--grok-line);
+  border-radius: 10px;
+  background: var(--grok-panel);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+}
+
+.grok-controls {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  width: min(17rem, calc(100% - 1.7rem));
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.grok-controls h2 {
+  margin: 0;
+  font-size: 0.74rem;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--grok-accent);
+}
+
+.grok-btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.grok-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  min-height: 1.9rem;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--grok-line);
+  border-radius: 7px;
+  color: #d1d8df;
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.76rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.grok-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.grok-btn.is-active {
+  border-color: color-mix(in srgb, var(--grok-accent), transparent 40%);
+  color: var(--grok-accent);
+  background: var(--grok-accent-soft);
+}
+
+.grok-btn--icon {
+  width: 1.9rem;
+  padding: 0.3rem;
+}
+
+.grok-field label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+  font-size: 0.72rem;
+  color: #8a96a4;
+}
+
+.grok-field input[type="range"] {
+  width: 100%;
+  accent-color: var(--grok-accent);
+}
+
+.grok-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.76rem;
+  color: #c5cdd6;
+}
+
+.grok-toggle input {
+  accent-color: var(--grok-accent);
+}
+
+.grok-body-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  max-height: 9.5rem;
+  overflow-y: auto;
+}
+
+.grok-body-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: 100%;
+  padding: 0.38rem 0.45rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: #c5cdd6;
+  background: transparent;
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.grok-body-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.grok-body-btn.is-selected {
+  border-color: color-mix(in srgb, var(--grok-accent), transparent 50%);
+  background: var(--grok-accent-soft);
+  color: var(--grok-accent);
+}
+
+.grok-swatch {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.grok-info {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  width: min(19rem, calc(100% - 1.7rem));
+  padding: 0.95rem;
+}
+
+.grok-info h3 {
+  margin: 0 1.5rem 0 0;
+  font-size: 1.2rem;
+  font-weight: 780;
+}
+
+.grok-info__type {
+  margin: 0.2rem 0 0.55rem;
+  color: var(--grok-accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.grok-info p {
+  margin: 0 0 0.65rem;
+  color: #aab4c0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.grok-info ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.grok-info li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.32rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.72rem;
+}
+
+.grok-info li span:first-child {
+  color: #8a96a4;
+}
+
+.grok-info li span:last-child {
+  font-weight: 600;
+  text-align: right;
+}
+
+.grok-info__close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+}
+
+.grok-hint {
+  position: absolute;
+  bottom: 0.85rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--grok-line);
+  border-radius: 999px;
+  color: #8a96a4;
+  background: rgba(7, 12, 18, 0.85);
+  font-size: 0.7rem;
+  pointer-events: none;
+}
+
+.grok-tour {
+  position: absolute;
+  bottom: 2.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.78rem;
+}
+
+.grok-tour strong {
+  color: var(--grok-accent);
+}
+
+.grok-label-3d {
+  padding: 0.12rem 0.4rem;
+  border: 1px solid rgba(136, 240, 186, 0.35);
+  border-radius: 4px;
+  color: #e8f5ee;
+  background: rgba(4, 8, 12, 0.85);
+  font-size: 0.65rem;
+  font-weight: 700;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.grok-label-3d--sun {
+  border-color: rgba(255, 190, 90, 0.45);
+  color: #ffe8b0;
+}
+
+@media (max-width: 700px) {
+  .grok-info {
+    top: auto;
+    bottom: 3.5rem;
+    left: 0.65rem;
+    right: 0.65rem;
+    width: auto;
+  }
+
+  .grok-hint {
+    display: none;
+  }
+}
