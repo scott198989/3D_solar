@@ -41,6 +41,7 @@ export function createEngine(container, options = {}) {
   picker.setPickables(graph.pickables);
 
   // ---- state ----
+  let alive = true;
   let focusedId = null;
   let hoveredId = null;
   let elapsed = 0;
@@ -202,13 +203,21 @@ export function createEngine(container, options = {}) {
   disposer.add(() => loop.stop());
   loop.start();
 
-  emitter.emit("ready", { bodies: graph.listBodies(), hz: graph.habitableZoneInfo(), state: uiState() });
+  // Defer "ready" by one microtask: the React bridge calls createEngine()
+  // synchronously and attaches its "ready" listener immediately AFTER we
+  // return, so a synchronous emit here would be missed (overlay stuck). The
+  // `alive` guard skips the emit if the engine was disposed in between.
+  queueMicrotask(() => {
+    if (!alive) return;
+    emitter.emit("ready", { bodies: graph.listBodies(), hz: graph.habitableZoneInfo(), state: uiState() });
+  });
 
   // ---- public API ----
   return {
     on: (e, cb) => emitter.on(e, cb),
     off: (e, cb) => emitter.off(e, cb),
     dispose() {
+      alive = false;
       disposer.dispose();
       emitter.clear();
     },
